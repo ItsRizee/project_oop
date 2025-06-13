@@ -7,18 +7,16 @@ class Room {
 protected:
     int number;
     bool isUnderRenovation;
-    PricingStrategy* pricingStrategy;
 
 public:
-    Room(int number, bool isUnderRenovation, PricingStrategy* strategy);
+    Room(int number, bool isUnderRenovation);
     virtual ~Room();
 
-    bool underRenovation() const;
-    void setUnderRenovation(bool value);
+    bool UnderRenovation() const;
+    void SetUnderRenovation(bool value);
 
-    virtual const char* getType() const = 0;
-
-    //double calculatePrice(const ReservationContext& context) const;
+    virtual const char* GetType() const = 0;
+    virtual double CalculatePricePerNight(PricingStrategy* pricingStrategy) const = 0;
 };
 
 #endif

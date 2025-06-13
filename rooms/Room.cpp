@@ -1,18 +1,8 @@
 #include "Room.h"
 
-Room::Room(int number, bool isUnderRenovation, PricingStrategy* strategy)
-    : number(number), isUnderRenovation(isUnderRenovation), pricingStrategy(strategy) {}
+Room::Room(int number, bool isUnderRenovation)
+    : number(number), isUnderRenovation(isUnderRenovation) {}
 
-bool Room::underRenovation() const { return isUnderRenovation; }
+bool Room::UnderRenovation() const { return isUnderRenovation; }
 
-void Room::setUnderRenovation(bool value) { isUnderRenovation = value; }
-
-Room::~Room() {
-    delete pricingStrategy;
-}
-
-
-
-// double Room::calculatePrice(const ReservationContext& context) const {
-//     return pricingStrategy->calculate(*this, context);
-// }
+void Room::SetUnderRenovation(bool value) { isUnderRenovation = value; }

@@ -5,7 +5,7 @@
 
 class StandardPlan : public PricingStrategy {
 public:
-    double calculate(const Room* room) const;
+    double calculate(double price) const override;
 };
 
 #endif

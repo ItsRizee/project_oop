@@ -1,13 +1,13 @@
-#ifndef DOUBLEROOM_H
-#define DOUBLEROOM_H
+#ifndef LUXURYROOM_H
+#define LUXURYROOM_H
 
 #include "Room.h"
 
-class DoubleRoom : public Room {
+class LuxuryRoom : public Room {
 private:
     double price;
 public:
-    DoubleRoom(int number, bool isUnderRenovation);
+    LuxuryRoom(int number, bool isUnderRenovation);
 
     const char* GetType() const override;
     double CalculatePricePerNight(PricingStrategy* strategy) const override;
