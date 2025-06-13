@@ -1,21 +1,24 @@
 #ifndef ROOM_H
 #define ROOM_H
 
+#include "../pricing/PricingStrategy.h"
+
 class Room {
-public:
-    enum class Status {
-        Available,
-        Occupied,
-        UnderRenovation
-    };
-
 protected:
-    Status status;
+    int number;
+    bool isUnderRenovation;
+    PricingStrategy* pricingStrategy;
 
 public:
-    virtual double pricing();
-    Status getStatus() const { return status; }
-    void setStatus(Status newStatus) { status = newStatus; }
+    Room(int number, bool isUnderRenovation, PricingStrategy* strategy);
+    virtual ~Room();
+
+    bool underRenovation() const;
+    void setUnderRenovation(bool value);
+
+    virtual const char* getType() const = 0;
+
+    //double calculatePrice(const ReservationContext& context) const;
 };
 
 #endif

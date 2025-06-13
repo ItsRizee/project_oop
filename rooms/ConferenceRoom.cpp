@@ -2,4 +2,4 @@
 // Created by rize on 11.06.25.
 //
 
-#include "./SingleRoom.h"
+#include "./ConferenceRoom.h"
