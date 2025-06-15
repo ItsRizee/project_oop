@@ -51,3 +51,7 @@ Customer::~Customer() {
     delete[] email;
     delete customerStatus;
 }
+
+bool Customer::operator==(const Customer& other) const {
+    return this->id == other.id;
+}

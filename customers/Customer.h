@@ -21,6 +21,8 @@ public:
     int GetDiscount() const;
     StatusType getStatusType() const;
     void UpgradeStatus(StatusType newStatus);
+
+    bool operator==(const Customer& other) const;
 };
 
-#endif //CUSTOMER_H
+#endif

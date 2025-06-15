@@ -14,9 +14,10 @@ public:
 
     bool UnderRenovation() const;
     void SetUnderRenovation(bool value);
-
     virtual const char* GetType() const = 0;
     virtual double CalculatePricePerNight(PricingStrategy* pricingStrategy) const = 0;
+
+    bool operator==(const Room& other) const;
 };
 
 #endif

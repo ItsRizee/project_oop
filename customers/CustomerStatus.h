@@ -9,7 +9,7 @@ private:
 public:
     CustomerStatus(StatusType type);
 
-    int GetDiscount() const;
+    double GetDiscount() const;
     StatusType GetStatusType() const;
     void SetStatusType(StatusType newType);
 };

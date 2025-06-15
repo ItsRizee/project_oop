@@ -15,7 +15,6 @@ bool Reservation::validInput(Customer *customer, Room *room, Date *startDate, Da
     if (*startDate > *endDate)
         return false;
 
-    // Now we need to check if the room is available between start and end
     return true;
 }
 
@@ -49,5 +48,6 @@ Date* Reservation::GetEndDate() const {
 double Reservation::CalculatePrice() const {
     int nights = startDate->GetNights(*endDate);
     PricingStrategy* pricingStrategy = PricingStrategyFactory::createPricingStrategy(startDate, endDate);
-    return nights * room->CalculatePricePerNight(pricingStrategy);
+    double price = nights * room->CalculatePricePerNight(pricingStrategy);
+    return price - (price * customer->GetDiscount());
 }

@@ -32,4 +32,7 @@ add_executable(project_oop main.cpp
         rooms/Apartment.h
         rooms/LuxuryRoom.cpp
         rooms/LuxuryRoom.h
+        hotel/Hotel.cpp
+        hotel/Hotel.h
+        hotel/Vector.h
 )
