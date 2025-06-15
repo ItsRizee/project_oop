@@ -6,7 +6,7 @@ LuxuryRoom::LuxuryRoom(int number, bool isUnderRenovation)
 }
 
 const char* LuxuryRoom::GetType() const {
-    return "Luxury room";
+    return "LuxuryRoom";
 }
 
 double LuxuryRoom::CalculatePricePerNight(PricingStrategy* pricingStrategy) const {

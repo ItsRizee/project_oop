@@ -7,6 +7,7 @@
 
 class Reservation {
 private:
+    int id;
     Customer* customer;
     Room* room;
     Date* startDate;
@@ -15,8 +16,9 @@ private:
     bool validInput(Customer* customer, Room* room, Date* startDate, Date* endDate);
 
 public:
-    Reservation(Customer* customer, Room* room, Date* startDate, Date* endDate);
+    Reservation(int id, Customer* customer, Room* room, Date* startDate, Date* endDate);
 
+    int GetID() const;
     Customer* GetCustomer() const;
     Room* GetRoom() const;
     Date* GetStartDate() const;

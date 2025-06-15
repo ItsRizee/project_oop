@@ -6,7 +6,7 @@ ConferenceRoom::ConferenceRoom(int number, bool isUnderRenovation)
 }
 
 const char* ConferenceRoom::GetType() const {
-    return "Conference Room";
+    return "ConferenceRoom";
 }
 
 double ConferenceRoom::CalculatePricePerNight(PricingStrategy* pricingStrategy) const {

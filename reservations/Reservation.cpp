@@ -18,7 +18,7 @@ bool Reservation::validInput(Customer *customer, Room *room, Date *startDate, Da
     return true;
 }
 
-Reservation::Reservation(Customer *customer, Room *room, Date *startDate, Date *endDate) {
+Reservation::Reservation(int id, Customer *customer, Room *room, Date *startDate, Date *endDate) : id(id) {
     if (validInput(customer, room, startDate, endDate)) {
         this->customer = customer;
         this->room = room;
@@ -27,6 +27,10 @@ Reservation::Reservation(Customer *customer, Room *room, Date *startDate, Date *
     } else {
         throw std::invalid_argument("Invalid arguments");
     }
+}
+
+int Reservation::GetID() const {
+    return id;
 }
 
 Customer* Reservation::GetCustomer() const {

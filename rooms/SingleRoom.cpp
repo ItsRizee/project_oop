@@ -6,7 +6,7 @@ SingleRoom::SingleRoom(int number, bool isUnderRenovation)
 }
 
 const char* SingleRoom::GetType() const {
-    return "Single Room";
+    return "SingleRoom";
 }
 
 double SingleRoom::CalculatePricePerNight(PricingStrategy* pricingStrategy) const {

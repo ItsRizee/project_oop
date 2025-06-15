@@ -16,11 +16,10 @@ public:
     int GetDay() const;
     int GetMonth() const;
     int GetYear() const;
-
     void SetDate(int day, int month, int year);
     bool IsValid() const;
-
     int GetNights(const Date& other) const;
+    void Print() const;
 
     bool operator==(const Date& other) const;
     bool operator!=(const Date& other) const;

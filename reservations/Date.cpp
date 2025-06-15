@@ -54,6 +54,12 @@ int Date::GetNights(const Date& other) const {
     return (*this - other) - 1;
 }
 
+void Date::Print() const {
+    std::cout << (day < 10 ? "0" : "") << day << "."
+              << (month < 10 ? "0" : "") << month << "."
+              << year;
+}
+
 bool Date::operator==(const Date& other) const {
     return day == other.day && month == other.month && year == other.year;
 }

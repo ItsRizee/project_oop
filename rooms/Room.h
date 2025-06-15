@@ -12,6 +12,7 @@ public:
     Room(int number, bool isUnderRenovation);
     virtual ~Room();
 
+    int GetNumber() const;
     bool UnderRenovation() const;
     void SetUnderRenovation(bool value);
     virtual const char* GetType() const = 0;

@@ -4,14 +4,15 @@
 
 class Employee {
 private:
-    char* name;
+    char* username;
     PositionType position;
 
 public:
-    Employee(char* name, PositionType position);
+    Employee(char* username, PositionType position);
 
-    char* GetName() const;
+    char* GetUsername() const;
     PositionType GetPosition() const;
+    void SetPosition(PositionType newPosition);
 };
 
 #endif
