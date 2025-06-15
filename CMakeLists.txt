@@ -35,4 +35,7 @@ add_executable(project_oop main.cpp
         hotel/Hotel.cpp
         hotel/Hotel.h
         hotel/Vector.h
+        employees/Employee.cpp
+        employees/Employee.h
+        employees/PositionType.h
 )

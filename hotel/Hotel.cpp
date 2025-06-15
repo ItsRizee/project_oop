@@ -12,6 +12,8 @@ Hotel::~Hotel() {
         delete historyOfReservations[i];
     for (int i = 0; i < customers.size(); i++)
         delete customers[i];
+    for (int i = 0; i < employees.size(); i++)
+        delete employees[i];
     for (int i = 0; i < rooms.size(); i++)
         delete rooms[i];
 }
@@ -23,7 +25,11 @@ static bool roomExists(Room* room, Vector<Room*> rooms) {
     return false;
 }
 
-bool Hotel::isRoomAvailable(Room* room, const Date* startDate, const Date* endDate) const {
+bool Hotel::isRoomAvailable(Room* room, const Date* startDate, const Date* endDate, Employee employee) const {
+    if (employee.GetPosition() != PositionType::Receptionist) {
+        throw std::runtime_error("Access denied: employee role does not have permission for this feature");
+    }
+
     if (room->UnderRenovation()) {
         return false;
     }
@@ -41,12 +47,16 @@ bool Hotel::isRoomAvailable(Room* room, const Date* startDate, const Date* endDa
     return true;
 }
 
-void Hotel::addReservation(Customer* customer, Room* room, Date* startDate, Date* endDate) {
+void Hotel::addReservation(Customer* customer, Room* room, Date* startDate, Date* endDate, Employee employee) {
+    if (employee.GetPosition() != PositionType::Receptionist) {
+        throw std::runtime_error("Access denied: employee role does not have permission for this feature");
+    }
+
     if (!roomExists(room, rooms)) {
         throw std::invalid_argument("The room does not belong to this hotel.");
     }
 
-    if (!isRoomAvailable(room, startDate, endDate)) {
+    if (!isRoomAvailable(room, startDate, endDate, employee)) {
         throw std::invalid_argument("The room is not available for the selected period.");
     }
 
@@ -72,7 +82,11 @@ void Hotel::addReservation(Customer* customer, Room* room, Date* startDate, Date
     }
 }
 
-void Hotel::cancelReservation(int index) {
+void Hotel::cancelReservation(int index, Employee employee) {
+    if (employee.GetPosition() != PositionType::Receptionist) {
+        throw std::runtime_error("Access denied: employee role does not have permission for this feature");
+    }
+
     if (index < 0 || index >= reservations.size())
         throw std::out_of_range("The index is out of range");
 
@@ -88,11 +102,27 @@ void Hotel::cancelReservation(int index) {
     historyOfReservations.remove(index);
 }
 
-void Hotel::addRoom(Room *room) {
+void Hotel::addRoom(Room *room, Employee employee) {
+    if (employee.GetPosition() != PositionType::Manager) {
+        throw std::runtime_error("Access denied: employee role does not have permission for this feature");
+    }
     rooms.push_back(room);
 }
 
-void Hotel::analyzeCustomerActivity() const {
+void Hotel::addEmployee(char *name, PositionType position, Employee employee) {
+    if (employee.GetPosition() != PositionType::Manager) {
+        throw std::runtime_error("Access denied: employee role does not have permission for this feature");
+    }
+    Employee* newEmployee = new Employee(name, position);
+    employees.push_back(newEmployee);
+}
+
+
+void Hotel::analyzeCustomerActivity(Employee employee) const {
+    if (employee.GetPosition() != PositionType::Manager) {
+        throw std::runtime_error("Access denied: employee role does not have permission for this feature");
+    }
+
     Vector<int> reservationCount;
 
     for (int i = 0; i < customers.size(); ++i) {
